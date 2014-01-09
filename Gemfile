@@ -46,6 +46,7 @@ group :test do
   gem 'timecop',            '~> 0.3.5'
   gem 'capybara-email'
   gem 'valid_attribute',    '~> 1'
+  gem 'shoulda-matchers'
   gem 'launchy'
   gem 'simple-rss',         '~> 1.2.3'
   gem 'fivemat'
