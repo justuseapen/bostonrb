@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140109195747) do
+ActiveRecord::Schema.define(:version => 20140109200441) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(:version => 20140109195747) do
     t.string   "most_recent_post_url"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+  end
+
+  create_table "event_types", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "locations", :force => true do |t|
