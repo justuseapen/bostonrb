@@ -1,22 +1,18 @@
 require 'spec_helper'
-require 'requests/spec_helper'
+require 'support/omniauth_macros'
 
-describe "user authenticates through github" do
-  it "can sign in user with github account" do
-    visit '/'
-    page.should have_content("Sign in with Github")
-    mock_auth_hash
-    click_link "Sign in"
-    page.should have_content("mockuser")  # user name
-    page.should have_content("Sign out")
+feature 'authenticate with github', %q{
+  As an user,
+  I want to log in using my Github Account
+  So that I can have access to admin functionality
+}, authentication: true,
+vcr: {cassette_name: 'github/auth'} do
+
+  # Acceptance Criteria
+  # * Admins are authenticated via Github API
+  # * If authentication fails, returns to the root path and flashes an error message
+
+  scenario 'successful authentication' do
+    visit root_path
   end
- 
-  it "can handle authentication error" do
-    OmniAuth.config.mock_auth[:github] = :invalid_credentials
-    visit '/'
-    page.should have_content("Sign in with Github")
-    click_link "Sign in"
-    page.should have_content('Authentication failed.')
-  end
- 
-end
+    
