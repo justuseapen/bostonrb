@@ -12,7 +12,15 @@ vcr: {cassette_name: 'github/auth'} do
   # * Admins are authenticated via Github API
   # * If authentication fails, returns to the root path and flashes an error message
 
-  scenario 'successful authentication' do
-    visit root_path
+  describe 'successful authentication' do
+    it "Login button should log in" do
+      visit root_path
+      click_link "Log in"
+      
+      page.should have_link "Logout"
+    end
   end
+
+end
+
     
