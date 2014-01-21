@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  binding.pry
   def new
     @event = Event.new
   end
@@ -14,6 +13,9 @@ class EventsController < ApplicationController
       flash[:notice] = 'Invalid information. Please try again'
       render :new
     end
+  end
+  def show
+    @event = Event.find(params[:id])
   end
   private
     def set_event

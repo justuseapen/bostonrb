@@ -1,0 +1,17 @@
+<h1> 
+  <% #binding.pry %>
+  <%= @event.event_type.name %> at <%= @event.location.name %> 
+</h1>
+<br>
+<p> 
+  <%= @event.date %> at <%= @event.start_at %>
+</p>
+<br>
+<p>
+  <%= @event.location.street %>
+  <br>
+  <%= @event.location.city%>, <%= @event.location.state %>
+  <br>
+  <br>
+  <%= link_to 'RSVP Here', @event.rsvp_url %>
+</p>

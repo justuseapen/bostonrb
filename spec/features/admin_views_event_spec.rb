@@ -17,9 +17,8 @@ feature 'view individual events for greater detail' do
     visit event_path(event)
     expect(page).to have_content(event.location.name)
     expect(page).to have_content(event.location.street)
-    expect(page).to have_content(event.event_type)
+    expect(page).to have_content(event.event_type.name)
     expect(page).to have_content(event.date)
     expect(page).to have_content(event.start_at)
-    expect(page).to have_content(event.rsvp_url)
   end
 end

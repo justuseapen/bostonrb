@@ -8,8 +8,8 @@ module ApplicationHelper
   end
 
   def next_event
-    if @next_event = Rails.cache.read(:next_event)
-      render :partial => 'pages/next_event'
+    if @next_event = Rails.cache.read(:next_calendar_event)
+      render :partial => 'pages/next_calendar_event'
     end
   end
 
