@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
+  binding.pry
   def new
     @event = Event.new
   end
 
   def create
-    @event = Event.new(params[:event])
+    @event = Event.build(params[:id])
 
     if @event.save
       flash[:notice] = 'Event successfully created'
@@ -14,4 +15,13 @@ class EventsController < ApplicationController
       render :new
     end
   end
+  private
+    def set_event
+      @event = Event.find(params[:id])
+    end
+
+    def event_params
+      params.require(:event).permit(:event_type,:location,:date,:start_at,:end_at,:rsvp_url)
+    end
+
 end
